@@ -11,7 +11,7 @@ const CodeBlockPage = ({ codeBlock }) => {
 
   // Effect hook to set up socket connection and handle code updates
   useEffect(() => {
-    const newSocket = io("online-coding-app-server.railway.internal");
+    const newSocket = io("online-coding-app-server.railway.internal:5000");
     newSocket.on("connect", () => {
       setSocket(newSocket);
     });
@@ -31,7 +31,7 @@ const CodeBlockPage = ({ codeBlock }) => {
 
   useEffect(() => {
     const checkIfMentor = async () => {
-      const response = await fetch("http://online-coding-app-server.railway.internal/user_info", {
+      const response = await fetch("http://online-coding-app-server.railway.internal:5000/user_info", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -43,7 +43,7 @@ const CodeBlockPage = ({ codeBlock }) => {
       // If user is a mentor, send a post request
       if (data.isMentor) {
         alert("Hi Tom :)");
-        await fetch("http://online-coding-app-server.railway.internal/user_info", {
+        await fetch("http://online-coding-app-server.railway.internal:5000/user_info", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

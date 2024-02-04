@@ -9,7 +9,7 @@ const App = () => {
 
   // Fetching code blocks from the server when the component mounts
   useEffect(() => {
-    fetch("http://online-coding-app-server.railway.internal/get_codeblocks", {
+    fetch("http://online-coding-app-server.railway.internal:5000/get_codeblocks", {
       headers: {
         "Content-Type": "application/json",
       },
